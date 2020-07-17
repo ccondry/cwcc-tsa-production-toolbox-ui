@@ -1,28 +1,20 @@
 <template>
   <section class="hero is-bold app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
-    <div class="hero-head">
-      <div class="columns">
-        <div class="column is-4">
-        </div>
-        <div class="column is-4">
-          <p class="level-item has-text-centered">
-              <a href="/">dCloud Toolbox</a>
-              &nbsp;-
-              CWCC TSA Demo Customization (Production)
-          </p>
-        </div>
-        <div class="column is-4">
-          <div v-if="authenticated" class="level-right">
-            {{ user.username }}
-            &nbsp;
-            <a @click="clickLogout">Logout</a>
-            &nbsp;&nbsp;
-          </div>
-          <div v-if="!authenticated && !production" class="level-right">
-            <a @click="clickLogin">Login</a>
-            &nbsp;&nbsp;
-          </div>
-        </div>
+    <div class="hero-head" style="display: flex; justify-content: space-between">
+      <div style="margin-left: calc(38vw - 8em);">
+        <a href="/">dCloud Toolbox</a>
+        &nbsp;-
+        CWCC TSA Demo Customization (Production)
+      </div>
+      <div v-if="authenticated" class="pull-right">
+        {{ user.username }}
+        &nbsp;
+        <a @click="clickLogout">Logout</a>
+        &nbsp;&nbsp;
+      </div>
+      <div v-if="!authenticated && !production" class="pull-right">
+        <a @click="clickLogin">Login</a>
+        &nbsp;&nbsp;
       </div>
     </div>
   </section>
