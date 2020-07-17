@@ -6,25 +6,22 @@ import * as getters from './getters'
 import mutations from './mutations'
 import modules from './modules'
 
+// production URL base
+let urlBase = '/api/v1/auth'
+
+if (process.env.NODE_ENV === 'development') {
+  // set up development endpoint base
+  // urlBase = 'http://localhost:3032/api/v1/auth'
+  urlBase = 'https://dcloud-collab-toolbox-rtp.cxdemo.net/api/v1/auth'
+}
+
 const endpoints = {
-  user: '/api/v1/cwcc-tsa-prod/user'
+  login: urlBase + '/login',
+  logout: urlBase + '/logout',
+  user: urlBase + '/user',
+  userDemo: urlBase + '/user/demo',
+  vertical: 'https://mm.cxdemo.net/api/v1/verticals?all=true&summary=true'
 }
-
-if (process.env.NODE_ENV === 'production') {
-  // set up production login/logout endpoints
-  endpoints.login = '/api/v1/auth/login'
-  endpoints.logout = '/api/v1/auth/logout'
-  endpoints.user = '/api/v1/auth/user'
-  endpoints.userDemo = '/api/v1/auth/user/demo'
-} else {
-  // set up development login/logout endpoints
-  endpoints.login = 'http://localhost:3032/api/v1/auth/login'
-  endpoints.logout = 'http://localhost:3032/api/v1/auth/logout'
-  endpoints.user = 'http://localhost:3032/api/v1/auth/user'
-  endpoints.userDemo = 'http://localhost:3032/api/v1/auth/user/demo'
-}
-
-endpoints.vertical = 'https://mm.cxdemo.net/api/v1/verticals?all=true&summary=true'
 
 Vue.use(Vuex)
 
