@@ -26,8 +26,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      filter: '',
-      pageSelection: 'Verticals'
     }
   },
 
@@ -35,8 +33,7 @@ export default {
   },
 
   props: {
-    show: Boolean,
-    menuFilter: String
+    show: Boolean
   },
 
   computed: {
